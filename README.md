@@ -1,4 +1,4 @@
-# Project Intelligence Graph
+# 🧠 Project Intelligence Graph
 
 > Upload any codebase → auto-build a knowledge graph → explore relationships visually → ask natural language questions
 
@@ -26,58 +26,73 @@ A **GraphRAG-powered developer tool** that converts codebases and project files 
 🧠 Project Intelligence Graph
 Upload your project → explore relationships → ask questions
 
-## 🖥 Screenshots
+System Status
+┌─────────────┬──────────────┐
+│ API ● Online│ PostgreSQL ● │
+│ Neo4j ● Online│ Ollama ●  │
+└─────────────┴──────────────┘
 
-### System Dashboard
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/16055a22-9ca0-478f-b1f1-bab4bff45a7c" width="700">
-</p>
+Knowledge Graph
+┌──────┬───────┬──────────┬──────────┐
+│ 1 Doc│ 45 Ch │ 87 Ent   │ 12 Rel   │
+└──────┴───────┴──────────┴──────────┘
+```
 
 ### Chat Interface
+```
+You: What functions does this project use?
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/1f7e60c3-a1ef-4ba1-a2c9-4aeb4814665d" width="700">
-</p>
+Bot: Based on the source code:
+- embedder.py: embed_text(), embed_batch(), cosine_similarity()
+- chunker.py: chunk_text(), clean_text(), extract_text()
+- query_engine.py: answer_question()
+- retriever.py: vector_search(), graph_search(), hybrid_retrieve()
+
+Sources: [VECTOR] embedder.py  [GRAPH] chunker.py
+⏱ 3.2s  📦 5 chunks  🕸 2 hops  🔀 hybrid
+```
 
 ### Observability Dashboard
+```
+┌──────────┬────────────┬───────────┬──────────────┐
+│ 12 Queries│ 4.2s avg  │ 3.8 chunks│ 92% success  │
+└──────────┴────────────┴───────────┴──────────────┘
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/3bb9d650-3aef-4c4c-a3a0-dcf8f5eb5b50" width="700">
-</p>
+[Latency Line Chart]     [Retrieval Pie Chart]
+```
+
 ---
-
 
 ## 🏗 Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                PROJECT SOURCES                      │
-│          ZIP Upload  │  GitHub URL                  │
+│                PROJECT SOURCES                       │
+│          ZIP Upload  │  GitHub URL                   │
 └──────────────────────┬──────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│                FILE WALKER                           │
+│                FILE WALKER                            │
 │   Supported: .py .js .ts .jsx .tsx .md .json .yaml   │
 │   Skips: node_modules, .git, __pycache__, .env       │
 └──────────────────────┬───────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│             CHUNKER + EMBEDDER                       │
-│   chunk_size=300 words, overlap=30 words             │
+│             CHUNKER + EMBEDDER                        │
+│   chunk_size=300 words, overlap=30 words              │
 │   Model: all-mpnet-base-v2 (768 dims)                │
 └──────────────────────┬───────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│          ENTITY EXTRACTOR                            │
-│   Code files (.py .js .ts) → Regex extraction        │
-│     → functions, classes, modules, endpoints         │
-│   Doc files (.md .txt)     → LLM extraction          │
-│     → concepts, technologies                         │
+│          ENTITY EXTRACTOR                             │
+│   Code files (.py .js .ts) → Regex extraction         │
+│     → functions, classes, modules, endpoints          │
+│   Doc files (.md .txt)     → LLM extraction           │
+│     → concepts, technologies                          │
 └──────────────────────┬───────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│              NEO4J KNOWLEDGE GRAPH                   │
+│              NEO4J KNOWLEDGE GRAPH                    │
 │   Project → File → Chunk → Entity                    │
 │   Entity -[RELATED]-> Entity                         │
 │   Chunk  -[MENTIONS]-> Entity                        │
@@ -96,14 +111,14 @@ Upload your project → explore relationships → ask questions
 └───────┬───────┘
         ↓
 ┌──────────────────────────────────────────────────────┐
-│            GEMMA 2B via OLLAMA                       │
-│            Local LLM, zero API cost                  │
+│            GEMMA 2B via OLLAMA                        │
+│            Local LLM, zero API cost                   │
 └───────┬──────────────────────────────────────────────┘
         ↓
 ┌──────────────────────────────────────────────────────┐
-│          OBSERVABILITY DASHBOARD                     │
-│   Latency chart │ Retrieval breakdown │ Traces table │
-│   Success rate  │ Slowest queries     │ Entity hits  │
+│          OBSERVABILITY DASHBOARD                      │
+│   Latency chart │ Retrieval breakdown │ Traces table  │
+│   Success rate  │ Slowest queries     │ Entity hits   │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -383,12 +398,12 @@ Question
 Detect question type (broad vs specific vs file-specific)
     ↓
 ┌─────────────────────────────────────────┐
-│ Parallel retrieval:                     │
-│  1. Vector similarity (cosine search)   │
-│  2. Entity matching in Neo4j graph      │
-│  3. Graph traversal (2-hop neighbors)   │
-│  4. File name detection + exact lookup  │
-│  5. Project overview (broad questions)  │
+│ Parallel retrieval:                      │
+│  1. Vector similarity (cosine search)    │
+│  2. Entity matching in Neo4j graph       │
+│  3. Graph traversal (2-hop neighbors)    │
+│  4. File name detection + exact lookup   │
+│  5. Project overview (broad questions)   │
 └─────────────────────────────────────────┘
     ↓
 Merge + deduplicate + rank by priority
