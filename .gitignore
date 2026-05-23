@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
+*.egg-info/
+.eggs/
+
+# Environment (IMPORTANT - never push secrets)
+.env
+*.env
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Docker volumes
+postgres_data/
+neo4j_data/
+
+# ML models (too large for github)
+*.bin
+*.pt
+*.onnx
+
+# Temp files
+/tmp/
+*.zip
