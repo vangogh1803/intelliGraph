@@ -29,7 +29,7 @@ Upload your project → explore relationships → ask questions
 System Status
 ┌─────────────┬──────────────┐
 │ API ● Online│ PostgreSQL ● │
-│ Neo4j ● Online│ Ollama ●  │
+│ Neo4j ● Online│ Ollama ●   │
 └─────────────┴──────────────┘
 
 Knowledge Graph
@@ -67,32 +67,32 @@ Sources: [VECTOR] embedder.py  [GRAPH] chunker.py
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                PROJECT SOURCES                       │
-│          ZIP Upload  │  GitHub URL                   │
+│                PROJECT SOURCES                      │
+│          ZIP Upload  │  GitHub URL                  │
 └──────────────────────┬──────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│                FILE WALKER                            │
+│                FILE WALKER                           │
 │   Supported: .py .js .ts .jsx .tsx .md .json .yaml   │
 │   Skips: node_modules, .git, __pycache__, .env       │
 └──────────────────────┬───────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│             CHUNKER + EMBEDDER                        │
-│   chunk_size=300 words, overlap=30 words              │
+│             CHUNKER + EMBEDDER                       │
+│   chunk_size=300 words, overlap=30 words             │
 │   Model: all-mpnet-base-v2 (768 dims)                │
 └──────────────────────┬───────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│          ENTITY EXTRACTOR                             │
-│   Code files (.py .js .ts) → Regex extraction         │
-│     → functions, classes, modules, endpoints          │
-│   Doc files (.md .txt)     → LLM extraction           │
-│     → concepts, technologies                          │
+│          ENTITY EXTRACTOR                            │
+│   Code files (.py .js .ts) → Regex extraction        │
+│     → functions, classes, modules, endpoints         │
+│   Doc files (.md .txt)     → LLM extraction          │
+│     → concepts, technologies                         │
 └──────────────────────┬───────────────────────────────┘
                        ↓
 ┌──────────────────────────────────────────────────────┐
-│              NEO4J KNOWLEDGE GRAPH                    │
+│              NEO4J KNOWLEDGE GRAPH                   │
 │   Project → File → Chunk → Entity                    │
 │   Entity -[RELATED]-> Entity                         │
 │   Chunk  -[MENTIONS]-> Entity                        │
@@ -111,14 +111,14 @@ Sources: [VECTOR] embedder.py  [GRAPH] chunker.py
 └───────┬───────┘
         ↓
 ┌──────────────────────────────────────────────────────┐
-│            GEMMA 2B via OLLAMA                        │
-│            Local LLM, zero API cost                   │
+│            GEMMA 2B via OLLAMA                       │
+│            Local LLM, zero API cost                  │
 └───────┬──────────────────────────────────────────────┘
         ↓
 ┌──────────────────────────────────────────────────────┐
-│          OBSERVABILITY DASHBOARD                      │
-│   Latency chart │ Retrieval breakdown │ Traces table  │
-│   Success rate  │ Slowest queries     │ Entity hits   │
+│          OBSERVABILITY DASHBOARD                     │
+│   Latency chart │ Retrieval breakdown │ Traces table │
+│   Success rate  │ Slowest queries     │ Entity hits  │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -253,7 +253,7 @@ project-intelligence-graph/
 ### 1. Clone
 
 ```bash
-git clone https://github.com/yourusername/project-intelligence-graph
+git clone [https://github.com/yourusername/project-intelligence-graph](https://github.com/vangogh1803/intelliGraph.git)
 cd project-intelligence-graph
 ```
 
@@ -398,12 +398,12 @@ Question
 Detect question type (broad vs specific vs file-specific)
     ↓
 ┌─────────────────────────────────────────┐
-│ Parallel retrieval:                      │
-│  1. Vector similarity (cosine search)    │
-│  2. Entity matching in Neo4j graph       │
-│  3. Graph traversal (2-hop neighbors)    │
-│  4. File name detection + exact lookup   │
-│  5. Project overview (broad questions)   │
+│ Parallel retrieval:                     │
+│  1. Vector similarity (cosine search)   │
+│  2. Entity matching in Neo4j graph      │
+│  3. Graph traversal (2-hop neighbors)   │
+│  4. File name detection + exact lookup  │
+│  5. Project overview (broad questions)  │
 └─────────────────────────────────────────┘
     ↓
 Merge + deduplicate + rank by priority
@@ -429,30 +429,6 @@ Return answer + sources + trace metadata
 ---
 
 ## ⚙ Configuration
-
-### Environment Variables (backend/.env)
-
-```env
-# PostgreSQL
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-POSTGRES_USER=graphrag
-POSTGRES_PASSWORD=graphrag123
-POSTGRES_DB=graphrag_db
-
-# Neo4j
-NEO4J_URI=bolt://localhost:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=graphrag123
-
-# Ollama
-OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=gemma:2b
-
-# App
-APP_ENV=development
-APP_PORT=8000
-```
 
 ### Tunable Parameters
 
@@ -482,11 +458,6 @@ APP_PORT=8000
 | Bad JSON from LLM | Regex fallback handles this automatically |
 | numpy conflict | Use `pip install "numpy<2"` |
 
----
-
-## 📝 Resume Description
-
-> Built a GraphRAG-powered project intelligence tool that converts codebases into navigable knowledge graphs using Neo4j, FastAPI, and Ollama. Implemented 5-mode hybrid retrieval combining vector similarity, graph traversal, file-exact lookup, and project-wide overview for natural language Q&A. Features an interactive React Flow graph visualizer and observability dashboard tracking query latency, retrieval quality, and traces. Uses local LLM (Gemma 2B) with zero API costs and sentence-transformers (all-mpnet-base-v2) for semantic embeddings.
 
 ---
 
