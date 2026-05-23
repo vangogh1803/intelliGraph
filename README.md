@@ -1,4 +1,4 @@
-# 🧠 Project Intelligence Graph
+# Project Intelligence Graph
 
 > Upload any codebase → auto-build a knowledge graph → explore relationships visually → ask natural language questions
 
@@ -10,12 +10,12 @@ A **GraphRAG-powered developer tool** that converts codebases and project files 
 
 | Feature | Description |
 |---------|-------------|
-| 📦 **Project Import** | Upload ZIP or paste GitHub URL |
-| 🔍 **Auto Entity Extraction** | Functions, classes, modules, endpoints, configs |
-| 🕸 **Knowledge Graph** | Neo4j graph with entities and relationships |
-| 💬 **Natural Language Q&A** | Ask anything about your project |
-| 🎨 **Graph Visualizer** | Interactive React Flow graph explorer |
-| 📊 **Observability** | Latency, retrieval types, traces, metrics |
+|  **Project Import** | Upload ZIP or paste GitHub URL |
+|  **Auto Entity Extraction** | Functions, classes, modules, endpoints, configs |
+|  **Knowledge Graph** | Neo4j graph with entities and relationships |
+|  **Natural Language Q&A** | Ask anything about your project |
+|  **Graph Visualizer** | Interactive React Flow graph explorer |
+|  **Observability** | Latency, retrieval types, traces, metrics |
 
 ---
 
