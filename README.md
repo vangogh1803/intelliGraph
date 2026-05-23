@@ -26,19 +26,27 @@ A **GraphRAG-powered developer tool** that converts codebases and project files 
 🧠 Project Intelligence Graph
 Upload your project → explore relationships → ask questions
 
-System Status
-<img width="426" height="174" alt="image" src="https://github.com/user-attachments/assets/16055a22-9ca0-478f-b1f1-bab4bff45a7c" />
+## 🖥 Screenshots
 
+### System Dashboard
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/16055a22-9ca0-478f-b1f1-bab4bff45a7c" width="700">
+</p>
 
 ### Chat Interface
-<img width="681" height="440" alt="image" src="https://github.com/user-attachments/assets/1f7e60c3-a1ef-4ba1-a2c9-4aeb4814665d" />
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1f7e60c3-a1ef-4ba1-a2c9-4aeb4814665d" width="700">
+</p>
 
 ### Observability Dashboard
-<img width="656" height="747" alt="image" src="https://github.com/user-attachments/assets/3bb9d650-3aef-4c4c-a3a0-dcf8f5eb5b50" />
 
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3bb9d650-3aef-4c4c-a3a0-dcf8f5eb5b50" width="700">
+</p>
 ---
+
 
 ## 🏗 Architecture
 
@@ -230,7 +238,7 @@ project-intelligence-graph/
 ### 1. Clone
 
 ```bash
-git clone [https://github.com/yourusername/project-intelligence-graph](https://github.com/vangogh1803/intelliGraph.git)
+git clone https://github.com/vangogh1803/intelliGraph.git
 cd project-intelligence-graph
 ```
 
