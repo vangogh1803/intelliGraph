@@ -1,4 +1,4 @@
-# 🧠 Project Intelligence Graph
+# Project Intelligence Graph
 
 > Upload any codebase → auto-build a knowledge graph → explore relationships visually → ask natural language questions
 
