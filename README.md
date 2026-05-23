@@ -27,39 +27,16 @@ A **GraphRAG-powered developer tool** that converts codebases and project files 
 Upload your project → explore relationships → ask questions
 
 System Status
-┌─────────────┬──────────────┐
-│ API ● Online│ PostgreSQL ● │
-│ Neo4j ● Online│ Ollama ●   │
-└─────────────┴──────────────┘
+<img width="426" height="174" alt="image" src="https://github.com/user-attachments/assets/16055a22-9ca0-478f-b1f1-bab4bff45a7c" />
 
-Knowledge Graph
-┌──────┬───────┬──────────┬──────────┐
-│ 1 Doc│ 45 Ch │ 87 Ent   │ 12 Rel   │
-└──────┴───────┴──────────┴──────────┘
-```
 
 ### Chat Interface
-```
-You: What functions does this project use?
+<img width="681" height="440" alt="image" src="https://github.com/user-attachments/assets/1f7e60c3-a1ef-4ba1-a2c9-4aeb4814665d" />
 
-Bot: Based on the source code:
-- embedder.py: embed_text(), embed_batch(), cosine_similarity()
-- chunker.py: chunk_text(), clean_text(), extract_text()
-- query_engine.py: answer_question()
-- retriever.py: vector_search(), graph_search(), hybrid_retrieve()
-
-Sources: [VECTOR] embedder.py  [GRAPH] chunker.py
-⏱ 3.2s  📦 5 chunks  🕸 2 hops  🔀 hybrid
-```
 
 ### Observability Dashboard
-```
-┌──────────┬────────────┬───────────┬──────────────┐
-│ 12 Queries│ 4.2s avg  │ 3.8 chunks│ 92% success  │
-└──────────┴────────────┴───────────┴──────────────┘
+<img width="656" height="747" alt="image" src="https://github.com/user-attachments/assets/3bb9d650-3aef-4c4c-a3a0-dcf8f5eb5b50" />
 
-[Latency Line Chart]     [Retrieval Pie Chart]
-```
 
 ---
 
